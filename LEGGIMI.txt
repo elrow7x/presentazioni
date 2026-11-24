@@ -1,0 +1,4 @@
+PRESENTAZIONI CLIENTI
+Ogni sottocartella e' una presentazione:
+  acquolina/  ->  https://NOME-PROGETTO.netlify.app/acquolina/
+Per pubblicare una modifica: doppio clic su pubblica.bat

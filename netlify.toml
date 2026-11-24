@@ -1,0 +1,9 @@
+# Nessun build: si pubblica la cartella così com'è.
+[build]
+  publish = "."
+
+# Le presentazioni non devono finire su Google.
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Robots-Tag = "noindex, nofollow"

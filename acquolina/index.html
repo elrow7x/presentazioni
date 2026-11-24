@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Acquolina · il design del nuovo sito</title>
+<link rel="stylesheet" href="fonts/fonts.css">
+<style>
+:root{
+	--panna:#f7eedf;--panna-2:#efe2cf;--carta:#fffcf6;
+	--ink:#231d1a;--ink-2:#5b524c;--ink-3:#a2978d;
+	--ciliegia:#ab172d;--ciliegia-2:#9a1428;--ciliegia-3:#5e0b18;
+	--salvia:#a9bdb4;--salvia-2:#dde6e0;--salvia-3:#5f7d71;
+	--burro:#f7d77a;--corallo:#fc6274;
+	--sans:'Bricolage Grotesque',system-ui,sans-serif;--serif:'Newsreader',Georgia,serif;--mono:'DM Mono',ui-monospace,monospace;--hand:'Caveat',cursive;
+	--pad:clamp(1.25rem,5vw,5rem);--max:1240px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--panna);color:var(--ink);font-family:var(--sans);font-size:clamp(1rem,.95rem + .2vw,1.12rem);line-height:1.6;-webkit-font-smoothing:antialiased}
+img{max-width:100%;display:block}
+a{color:var(--ciliegia)}
+.wrap{max-width:var(--max);margin:0 auto;padding:0 var(--pad)}
+section{padding:clamp(4rem,9vw,8rem) 0;position:relative}
+.kick{font-family:var(--mono);font-size:.74rem;letter-spacing:.16em;text-transform:uppercase;color:var(--ciliegia);display:flex;gap:.6rem;align-items:center;margin:0 0 1.2rem}
+.kick::before{content:"";width:.55rem;height:.55rem;background:var(--ciliegia);clip-path:polygon(50% 0,61% 35%,98% 35%,68% 57%,79% 91%,50% 70%,21% 91%,32% 57%,2% 35%,39% 35%)}
+h1,h2,h3{margin:0;font-weight:800;font-stretch:76%;letter-spacing:-.045em;line-height:.9}
+h1{font-size:clamp(3.2rem,9vw,8.4rem)}
+h2{font-size:clamp(2.4rem,6vw,5.4rem);margin-bottom:clamp(1.5rem,3vw,2.5rem)}
+h3{font-size:clamp(1.5rem,2.4vw,2.2rem);line-height:1}
+h1 em,h2 em,h3 em{font-family:var(--serif);font-style:italic;font-weight:300;font-stretch:normal;letter-spacing:-.02em;color:var(--ciliegia)}
+.lead{font-size:clamp(1.15rem,1rem + .6vw,1.45rem);line-height:1.45;max-width:46ch;color:var(--ink)}
+.muted{color:var(--ink-2)}
+.hand{font-family:var(--hand);font-size:1.6rem;color:var(--ciliegia);line-height:1.1}
+.grid2{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(2rem,5vw,5rem);align-items:center}
+.rule{border:0;border-top:1px solid var(--ink);margin:0}
+
+/* copertina */
+.cover{min-height:100vh;display:grid;align-content:space-between;padding:clamp(1.5rem,4vw,3rem) 0;overflow:hidden;background:var(--panna)}
+.cover__top{display:flex;justify-content:space-between;align-items:center;gap:1rem}
+.cover__top img{width:clamp(130px,14vw,190px)}
+.cover__meta{font-family:var(--mono);font-size:.74rem;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-2);text-align:right}
+.cover__main{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(0,.75fr);gap:clamp(2rem,5vw,5rem);align-items:end;padding:3rem 0}
+.cover__arch{border-radius:999px 999px 18px 18px;overflow:hidden;aspect-ratio:3/4;box-shadow:0 30px 60px -30px rgba(35,29,26,.5)}
+.cover__arch img{width:100%;height:100%;object-fit:cover}
+.ribbon{background:var(--ciliegia);color:var(--panna);overflow:hidden;white-space:nowrap;padding:.9rem 0;font-weight:800;font-stretch:76%;font-size:clamp(1.3rem,2.4vw,2rem);letter-spacing:-.02em;text-transform:uppercase}
+.ribbon span{display:inline-block;animation:scroll 32s linear infinite}
+.ribbon i{font-style:normal;color:var(--burro);margin:0 1.2rem}
+.ribbon em{font-family:var(--serif);font-weight:300;text-transform:none;font-stretch:normal}
+@keyframes scroll{to{transform:translateX(-50%)}}
+
+/* indice */
+.toc{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:1rem;counter-reset:t;list-style:none;padding:0;margin:2rem 0 0}
+.toc li{border-top:1px solid var(--ink);padding-top:.8rem;font-weight:650;font-stretch:88%;letter-spacing:-.01em;line-height:1.25}
+.toc li::before{counter-increment:t;content:counter(t,decimal-leading-zero);display:block;font-family:var(--mono);font-size:.72rem;color:var(--ciliegia);font-weight:400;margin-bottom:.3rem}
+
+/* partenza */
+.facts{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(1rem,2vw,2rem);margin-top:3rem}
+.fact{border-top:1px solid var(--ink);padding-top:1rem}
+.fact b{display:block;font-size:clamp(2.4rem,4.5vw,4rem);font-weight:800;font-stretch:76%;letter-spacing:-.05em;line-height:1;color:var(--ciliegia)}
+.fact span{color:var(--ink-2);font-size:.95rem}
+.photostrip{display:grid;grid-template-columns:1.2fr .8fr 1fr .9fr;gap:1rem;margin-top:3rem;align-items:end}
+.photostrip img{width:100%;object-fit:cover;border-radius:14px;aspect-ratio:3/4}
+.photostrip img:nth-child(2){border-radius:999px;aspect-ratio:1}
+.photostrip img:nth-child(3){border-radius:999px 999px 14px 14px}
+
+/* ancore */
+.anchors{background:var(--carta)}
+.anchor{display:grid;grid-template-columns:minmax(0,4fr) minmax(0,8fr);gap:clamp(1.5rem,4vw,4rem);padding:clamp(2rem,4vw,3.5rem) 0;border-top:1px solid var(--ink)}
+.anchor__num{font-family:var(--mono);font-size:.75rem;color:var(--ciliegia);letter-spacing:.14em}
+.swatches{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:.8rem;margin-top:1.4rem}
+.sw{border-radius:14px;overflow:hidden;background:#fff;box-shadow:0 1px 0 rgba(0,0,0,.06)}
+.sw i{display:block;height:92px}
+.sw p{margin:0;padding:.6rem .7rem .7rem;font-size:.82rem;line-height:1.3}
+.sw p b{display:block;font-weight:700}
+.sw p small{font-family:var(--mono);font-size:.68rem;color:var(--ink-2)}
+.motifs{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1rem;margin-top:1.4rem}
+.motif{background:var(--panna);border-radius:16px;padding:1rem;display:grid;gap:.8rem;align-content:start}
+.motif .demo{height:150px;border-radius:12px;overflow:hidden;position:relative;background:var(--panna-2)}
+.motif .demo img{width:100%;height:100%;object-fit:cover}
+.demo--arch img{border-radius:999px 999px 0 0}
+.demo--receipt{background:var(--carta)!important;padding:1rem 1.1rem;font-family:var(--mono);font-size:.72rem;line-height:1.7;-webkit-mask:conic-gradient(from -45deg at bottom,#0000,#000 1deg 89deg,#0000 90deg) 50% 100%/14px 51% repeat-x,conic-gradient(from 135deg at top,#0000,#000 1deg 89deg,#0000 90deg) 50% 0/14px 51% repeat-x;mask:conic-gradient(from -45deg at bottom,#0000,#000 1deg 89deg,#0000 90deg) 50% 100%/14px 51% repeat-x,conic-gradient(from 135deg at top,#0000,#000 1deg 89deg,#0000 90deg) 50% 0/14px 51% repeat-x}
+.demo--receipt div{display:flex;justify-content:space-between;border-bottom:1px dashed #cdbfae}
+.demo--pinked{-webkit-mask:conic-gradient(from -45deg at bottom,#0000,#000 1deg 89deg,#0000 90deg) 50% 100%/14px 51% repeat-x,conic-gradient(from 135deg at top,#0000,#000 1deg 89deg,#0000 90deg) 50% 0/14px 51% repeat-x;mask:conic-gradient(from -45deg at bottom,#0000,#000 1deg 89deg,#0000 90deg) 50% 100%/14px 51% repeat-x,conic-gradient(from 135deg at top,#0000,#000 1deg 89deg,#0000 90deg) 50% 0/14px 51% repeat-x}
+.motif b{font-size:1.15rem;font-weight:750;font-stretch:85%;letter-spacing:-.02em}
+.motif span{font-size:.9rem;color:var(--ink-2);line-height:1.45}
+.tone{display:flex;flex-wrap:wrap;gap:.6rem 1.4rem;margin-top:1rem;font-size:clamp(2rem,4.5vw,3.8rem);font-weight:800;font-stretch:76%;letter-spacing:-.045em;line-height:1}
+.tone em{font-family:var(--serif);font-weight:300;font-stretch:normal;color:var(--ciliegia)}
+
+/* evitato */
+.avoid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:0;border-top:1px solid var(--ink)}
+.avoid div{padding:1rem 0;border-bottom:1px solid rgba(35,29,26,.15);display:grid;grid-template-columns:2rem minmax(0,1fr);gap:.4rem}
+.avoid div:nth-child(odd){padding-right:2rem}
+.avoid .x{color:var(--ink-3);font-family:var(--mono)}
+.avoid .ok{color:var(--salvia-3);font-family:var(--mono)}
+.avoid s{color:var(--ink-3)}
+
+/* tipografia */
+.type{background:var(--ink);color:var(--panna)}
+.type .kick{color:var(--burro)}.type .kick::before{background:var(--burro)}
+.type h2 em{color:var(--corallo)}
+.specimen{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1.2rem;margin-top:2rem}
+.spec{border-top:1px solid rgba(247,238,223,.35);padding-top:1rem}
+.spec small{font-family:var(--mono);font-size:.7rem;letter-spacing:.12em;text-transform:uppercase;color:var(--salvia)}
+.spec p{margin:.4rem 0 0;line-height:1}
+.spec .a{font-size:clamp(3rem,6vw,5.6rem);font-weight:800;font-stretch:75%;letter-spacing:-.05em}
+.spec .b{font-family:var(--serif);font-style:italic;font-weight:300;font-size:clamp(2.6rem,5vw,4.6rem);color:var(--corallo)}
+.spec .c{font-family:var(--mono);font-size:clamp(1.1rem,1.6vw,1.4rem);line-height:1.6}
+.spec .d{font-family:var(--hand);font-size:clamp(2.4rem,4vw,3.6rem);color:var(--burro)}
+
+/* sistema dal vivo */
+.live{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1.2rem}
+.card{background:var(--carta);border-radius:18px;padding:clamp(1.2rem,2.5vw,2rem);display:grid;gap:1rem;align-content:start}
+.card small{font-family:var(--mono);font-size:.7rem;letter-spacing:.14em;text-transform:uppercase;color:var(--ciliegia)}
+.card p{margin:0;color:var(--ink-2);font-size:.95rem;line-height:1.5}
+.btn{position:relative;overflow:hidden;isolation:isolate;display:inline-flex;align-items:center;gap:.6rem;padding:1rem 1.7rem;border-radius:999px;background:var(--ciliegia);color:var(--panna);font-family:var(--mono);font-size:.8rem;letter-spacing:.12em;text-transform:uppercase;text-decoration:none;width:max-content}
+.btn::before{content:"";position:absolute;z-index:-1;left:-10%;right:-10%;top:100%;height:220%;background:var(--ciliegia-3);border-radius:45% 55% 0 0/30% 30% 0 0;transition:top .6s cubic-bezier(.2,.8,.2,1)}
+.btn:hover::before,.btn.is-on::before{top:-40%}
+.btn:active{scale:.97}
+.chiptext{font-size:clamp(1.7rem,3vw,2.6rem);font-weight:650;font-stretch:82%;letter-spacing:-.04em;line-height:1.1;margin:0}
+.chiptext em{font-family:var(--serif);font-weight:300;font-stretch:normal;color:var(--ciliegia)}
+.chip{position:relative;display:inline-block;width:1.75em;height:.8em;vertical-align:-.02em;border-radius:99px;box-shadow:0 .08em .25em -.08em rgba(35,29,26,.35);cursor:zoom-in}
+.chip img{width:100%;height:100%;object-fit:cover;border-radius:inherit}
+.chip::after{content:"";position:absolute;z-index:5;left:50%;bottom:calc(100% + .18em);width:220px;aspect-ratio:4/3;border-radius:14px;background:var(--src) center/cover;border:5px solid var(--carta);box-shadow:0 24px 50px -18px rgba(35,29,26,.55);opacity:0;translate:-50% 12px;scale:.35;transform-origin:50% 100%;pointer-events:none;transition:opacity .3s,scale .45s,translate .45s}
+.chip:hover::after,.chip.is-on::after{opacity:1;scale:1;translate:-50% 0}
+.mini-ribbon{border-radius:12px}
+.pan{display:grid;gap:0}
+.pan div{display:grid;grid-template-columns:minmax(0,1fr) auto;padding:.7rem 0;border-bottom:1px solid rgba(35,29,26,.12);font-weight:750;font-stretch:82%;font-size:1.5rem;letter-spacing:-.03em;position:relative;cursor:default;transition:color .3s}
+.pan div:nth-child(even){font-family:var(--serif);font-style:italic;font-weight:300;font-stretch:normal}
+.pan div span{font-family:var(--mono);font-size:.85rem;font-style:normal;align-self:center}
+.pan div:hover,.pan div.is-on{color:var(--ciliegia)}
+.pan div img{position:absolute;right:5rem;top:50%;width:120px;height:120px;object-fit:cover;border-radius:50%;opacity:0;scale:.6;translate:0 -50%;transition:.35s;pointer-events:none;z-index:3}
+.pan div:hover img,.pan div.is-on img{opacity:1;scale:1}
+
+/* pagine */
+.pages{background:var(--carta)}
+.page{display:grid;grid-template-columns:minmax(0,9fr) minmax(0,3fr);gap:clamp(1rem,3vw,2.5rem);align-items:start;padding:clamp(2rem,4vw,3rem) 0;border-top:1px solid var(--ink)}
+.page__shots{display:grid;grid-template-columns:minmax(0,1fr) 150px;gap:1rem;align-items:start}
+.browser{border-radius:12px;overflow:hidden;box-shadow:0 20px 50px -25px rgba(35,29,26,.45);background:#fff}
+.browser::before{content:"";display:block;height:22px;background:#ece5da radial-gradient(circle at 12px 11px,#e0614f 4px,transparent 5px) ,#ece5da radial-gradient(circle at 26px 11px,#e6b84b 4px,transparent 5px)}
+.phone{position:relative;border-radius:26px;overflow:hidden;border:7px solid var(--ink);background:var(--ink);aspect-ratio:9/19.5}
+.phone::before{content:"";position:absolute;z-index:2;top:6px;left:50%;translate:-50% 0;width:34%;height:12px;border-radius:99px;background:var(--ink)}
+.phone img{width:100%;height:100%;object-fit:cover;object-position:top}
+.page h3{margin-bottom:.6rem}
+.page p{margin:0 0 .6rem;font-size:.95rem;line-height:1.5;color:var(--ink-2)}
+.detail{margin-top:2.5rem;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1.2rem}
+.detail figure{margin:0}
+.detail img{border-radius:12px;box-shadow:0 14px 40px -25px rgba(35,29,26,.45)}
+.detail figcaption{font-size:.88rem;color:var(--ink-2);margin-top:.5rem}
+
+/* gestione */
+.manage{background:var(--salvia-2)}
+.steps3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1.2rem;margin-top:2rem}
+.step{background:var(--carta);border-radius:18px;padding:1.4rem}
+.step b{display:block;font-size:1.4rem;font-weight:800;font-stretch:80%;letter-spacing:-.03em;margin:.3rem 0 .4rem}
+.step small{font-family:var(--mono);color:var(--ciliegia);font-size:.75rem}
+.step p{margin:0;font-size:.95rem;color:var(--ink-2);line-height:1.5}
+.step ul{margin:.6rem 0 0;padding-left:1.1rem;font-size:.92rem;color:var(--ink-2)}
+
+/* manca */
+.todo{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1rem}
+.todo div{border:1.5px dashed var(--ink-3);border-radius:16px;padding:1.2rem 1.3rem;background:rgba(255,252,246,.6)}
+.todo b{font-size:1.25rem;font-weight:780;font-stretch:84%;letter-spacing:-.02em;display:block;margin-bottom:.35rem}
+.todo p{margin:0;font-size:.93rem;color:var(--ink-2);line-height:1.5}
+.todo .tag{display:inline-block;font-family:var(--mono);font-size:.66rem;letter-spacing:.1em;text-transform:uppercase;background:var(--burro);padding:.15rem .5rem;border-radius:99px;margin-bottom:.6rem;color:var(--ink)}
+.transfer{margin-top:1.5rem;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:2rem;align-items:center;background:var(--ciliegia-3);color:var(--panna);border-radius:22px;padding:clamp(1.5rem,3vw,2.5rem)}
+.transfer h3 em{color:var(--corallo)}
+.transfer p{color:rgba(247,238,223,.82);margin:.6rem 0 0}
+.van{aspect-ratio:16/10;border:2px dashed rgba(247,238,223,.45);border-radius:16px;display:grid;place-items:center;text-align:center;font-family:var(--mono);font-size:.78rem;letter-spacing:.1em;text-transform:uppercase;color:rgba(247,238,223,.7);padding:1rem}
+.wa{margin-top:1rem;background:#fff;color:var(--ink);border-radius:14px 14px 14px 4px;padding:.8rem 1rem;font-size:.88rem;line-height:1.5;max-width:30rem;font-family:var(--sans)}
+
+.end{background:var(--ciliegia);color:var(--panna);text-align:center}
+.end h2 em{color:var(--burro)}
+.end p{max-width:40ch;margin:0 auto;opacity:.9}
+footer{padding:2rem 0;font-family:var(--mono);font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-2);display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap}
+
+@media (prefers-reduced-motion:reduce){.ribbon span{animation:none}*{transition:none!important}}
+@media (max-width:900px){
+	.cover__main,.grid2,.anchor,.page,.transfer{grid-template-columns:minmax(0,1fr)}
+	.cover__arch{max-width:320px}
+	.toc{grid-template-columns:repeat(2,minmax(0,1fr))}
+	.facts,.motifs,.steps3,.live,.specimen,.todo,.detail{grid-template-columns:minmax(0,1fr)}
+	.swatches{grid-template-columns:repeat(3,minmax(0,1fr))}
+	.photostrip{grid-template-columns:repeat(2,minmax(0,1fr))}
+	.avoid{grid-template-columns:minmax(0,1fr)}.avoid div:nth-child(odd){padding-right:0}
+	.page__shots{grid-template-columns:minmax(0,1fr)}
+}
+@media (max-width:700px){
+	.page__shots .browser{display:none}
+	.page__shots{justify-items:center}
+	.phone{width:min(250px,72vw);max-height:440px;border-width:8px;border-radius:30px}
+	.page{gap:1.2rem}
+}
+
+/* stampa / PDF: A4 orizzontale, una sezione per pagina dove possibile */
+@page{size:A4 landscape;margin:0}
+@media print{
+	body{font-size:11pt;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+	section{padding:10mm 0;break-before:page}
+	.cover{min-height:auto;height:auto;padding:10mm 0 0}
+	.cover__arch{max-height:120mm;aspect-ratio:auto}
+	.wrap{max-width:none;padding:0 14mm}
+	.ribbon span{animation:none}
+	.page,.anchor,.card,.step,.todo div,.transfer,.detail figure,.fact,.motif,.sw,.avoid div,.photostrip{break-inside:avoid}
+	.page+.page{break-before:page}
+	.page__shots{grid-template-columns:minmax(0,1fr) 200px}
+	.detail{break-before:page}
+	.chip::after,.pan div img{display:none}
+	.print-note{display:block!important}
+	.phone{max-height:none}
+	.photostrip{margin-top:6mm}.photostrip img{aspect-ratio:4/3!important;border-radius:14px!important}
+	.facts{margin-top:6mm}
+}
+.touch-hint{display:none;font-family:var(--mono);font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;color:var(--ciliegia)}
+@media (hover:none){
+	.touch-hint{display:block}
+	.btn{padding:1.35rem 2.4rem;font-size:.9rem;min-width:min(100%,19rem);justify-content:center;-webkit-user-select:none;user-select:none;-webkit-touch-callout:none;touch-action:manipulation}
+	.btn::before{transition-duration:1.1s}
+	.chip{cursor:pointer;-webkit-tap-highlight-color:transparent}
+	.chip::after{width:min(220px,60vw)}
+	.pan div{-webkit-tap-highlight-color:transparent}
+	.pan div img{right:3.5rem;width:96px;height:96px}
+}
+@media (max-width:900px){
+	.page__shots{grid-template-columns:minmax(0,1fr) 34%;align-items:center}
+}
+@media (max-width:560px){
+	.page__shots{grid-template-columns:minmax(0,1fr)}
+	.page__shots .browser{display:none}
+	.page__shots .phone{width:52%;margin:0 auto}
+}
+.print-note{display:none;font-size:.85rem;color:var(--ink-2);font-style:italic}
+</style>
+</head>
+<body>
+
+<header class="cover">
+	<div class="wrap cover__top">
+		<img src="img/logo.png" alt="Acquolina – cucina d’amare">
+		<div class="cover__meta">Proposta di design · sito web<br>Novembre 2026</div>
+	</div>
+	<div class="wrap cover__main">
+		<div>
+			<p class="kick">Il nuovo sito di Acquolina</p>
+			<h1>Come ci siamo <em>arrivati</em></h1>
+			<p class="lead" style="margin-top:1.5rem">La storia delle scelte dietro al nuovo sito: da dove siamo partiti, perché ha questi colori e queste forme, cosa potrete gestire da soli e cosa manca per andare online.</p>
+		</div>
+		<div class="cover__arch"><img src="img/sala-bancone-gastronomia-archi-fano.webp" alt="La sala di Acquolina con gli archi e le pareti salvia"></div>
+	</div>
+	<div class="ribbon" aria-hidden="true"><span>Gastronomia <i>✷</i> <em>Pasta fresca fatta da noi</em> <i>✷</i> Menù del giorno <i>✷</i> <em>Lungomare Sassonia</em> <i>✷</i> Anche da asporto <i>✷</i> Gastronomia <i>✷</i> <em>Pasta fresca fatta da noi</em> <i>✷</i> Menù del giorno <i>✷</i> <em>Lungomare Sassonia</em> <i>✷</i> Anche da asporto <i>✷</i>&nbsp;</span></div>
+</header>
+
+<section>
+	<div class="wrap">
+		<p class="kick">In questa presentazione</p>
+		<h2>Otto tappe, <em>cinque minuti</em></h2>
+		<ol class="toc">
+			<li>Da dove siamo partiti</li><li>Le tre ancore del design</li><li>Cosa abbiamo evitato</li><li>I caratteri</li>
+			<li>Il sistema dal vivo</li><li>Le pagine</li><li>Cosa gestite da soli</li><li>Cosa manca per andare online</li>
+		</ol>
+		<p class="print-note" style="margin-top:2rem">Questa è la versione stampabile. Le animazioni si vedono nella versione online della presentazione.</p>
+	</div>
+</section>
+
+<section style="background:var(--panna-2)">
+	<div class="wrap">
+		<p class="kick">01 · Da dove siamo partiti</p>
+		<div class="grid2">
+			<h2>Prima il materiale <em>vero</em>, poi le idee</h2>
+			<div>
+				<p class="lead">Niente modelli presi da internet: il punto di partenza sono stati il locale, il logo, il menù e le foto dello shooting del 14 novembre.</p>
+				<p class="muted">Il vecchio sito era una sola pagina, ferma al 2024. Il nuovo deve farvi trovare su Google, far venire voglia di passare, far prenotare o chiamare in un tocco, e lasciarvi aggiornare menù e disponibilità dal telefono.</p>
+			</div>
+		</div>
+		<div class="facts">
+			<div class="fact"><b>72</b><span>foto dello shooting scelte, rinominate e alleggerite (da 160 MB a 10 MB) per un sito veloce</span></div>
+			<div class="fact"><b>114</b><span>voci del vostro menù, del banco e della carta dei vini, gestibili da RistoMenu</span></div>
+			<div class="fact"><b>8</b><span>pagine: Home, Gastronomia, Pasta fresca, Menù, La bottega, Feste, Prenota, Contatti</span></div>
+		</div>
+		<div class="photostrip">
+			<img src="img/gastronomia-vetrina-banco-cartellini-fano.webp" alt="Vetrina del banco">
+			<img src="img/gastronomia-capesante-gratinate-dettaglio-fano.webp" alt="Capesante gratinate">
+			<img src="img/pasta-fresca-tagliatelle-mani-fano.webp" alt="Tagliatelle fresche">
+			<img src="img/pasta-fresca-farina-paolo-mariani-fano.webp" alt="Semola Paolo Mariani">
+		</div>
+	</div>
+</section>
+
+<section class="anchors">
+	<div class="wrap">
+		<p class="kick">02 · Le tre ancore</p>
+		<h2>Ogni scelta ha un <em>perché</em></h2>
+		<p class="lead">Ogni colore e ogni forma del sito si spiega con una frase: “perché da Acquolina c’è…”. Se una scelta non si spiega così, non entra.</p>
+
+		<div class="anchor">
+			<div><p class="anchor__num">ANCORA 1</p><h3>I colori <em>del posto</em></h3></div>
+			<div>
+				<p class="muted">Presi dal logo e dalla sala, non da una tavolozza alla moda. Il ciliegia si usa con misura (bottoni e accenti), il resto è carta calda e verde salvia.</p>
+				<div class="swatches">
+					<div class="sw"><i style="background:#ab172d"></i><p><b>Ciliegia</b><small>#AB172D</small><br>la ciliegia del logo</p></div>
+					<div class="sw"><i style="background:#a9bdb4"></i><p><b>Salvia</b><small>#A9BDB4</small><br>le pareti della sala</p></div>
+					<div class="sw"><i style="background:#f7eedf"></i><p><b>Panna</b><small>#F7EEDF</small><br>la carta del banco</p></div>
+					<div class="sw"><i style="background:#231d1a"></i><p><b>Inchiostro</b><small>#231D1A</small><br>lavagne e cartellini</p></div>
+					<div class="sw"><i style="background:#f7d77a"></i><p><b>Burro</b><small>#F7D77A</small><br>solo per gli accenti</p></div>
+				</div>
+			</div>
+		</div>
+
+		<div class="anchor">
+			<div><p class="anchor__num">ANCORA 2</p><h3>Forme prese <em>dagli oggetti</em></h3></div>
+			<div>
+				<p class="muted">Pochi motivi grafici, tutti nati da qualcosa che c’è davvero da Acquolina.</p>
+				<div class="motifs">
+					<div class="motif"><div class="demo demo--arch"><img src="img/gastronomia-paella-pesce-teglia-fano.webp" alt=""></div><b>Gli archi</b><span>Le porte ad arco della sala diventano la cornice delle foto.</span></div>
+					<div class="motif"><div class="demo demo--receipt"><div><span>ANTIPASTO MARE</span><span>22,00</span></div><div><span>CHITARRINA</span><span>12,00</span></div><div><span>PAELLA</span><span>10,00</span></div><div><span>RUSTITA</span><span>20,00</span></div></div><b>Lo scontrino</b><span>Il foglietto del banco diventa la grafica dei piatti consigliati.</span></div>
+					<div class="motif"><div class="demo demo--pinked"><img src="img/pasta-fresca-ravioli-dettaglio-fano.webp" alt=""></div><b>La rotella</b><span>Il bordo dentellato della rotella da pasta incornicia le foto della pasta fresca.</span></div>
+				</div>
+			</div>
+		</div>
+
+		<div class="anchor">
+			<div><p class="anchor__num">ANCORA 3</p><h3>Il <em>tono</em></h3></div>
+			<div>
+				<p class="muted">Come parla il sito: frasi corte, concrete, niente parole vuote. Tre aggettivi da confermare insieme:</p>
+				<div class="tone"><span>Genuino</span><em>di casa</em><span>Vivace</span></div>
+			</div>
+		</div>
+	</div>
+</section>
+
+<section>
+	<div class="wrap">
+		<p class="kick">03 · Cosa abbiamo evitato</p>
+		<h2>Non il solito <em>sito da modello</em></h2>
+		<p class="lead" style="margin-bottom:2rem">Molti siti oggi si somigliano tutti. Ecco cosa abbiamo scartato, e cosa abbiamo scelto al suo posto.</p>
+		<div class="avoid">
+			<div><span class="x">✕</span><s>Nero e oro “di lusso”, foto stock di piatti perfetti</s></div><div><span class="ok">✓</span>I vostri colori e le vostre foto, con la luce calda del locale</div>
+			<div><span class="x">✕</span><s>Lo stesso carattere ovunque, titoli centrati e sottotitolo grigio</s></div><div><span class="ok">✓</span>Contrasto tra un carattere pesante e un corsivo leggero, come una lavagna scritta a mano</div>
+			<div><span class="x">✕</span><s>Menù in PDF da scaricare</s></div><div><span class="ok">✓</span>Menù vero nella pagina, leggibile dal telefono e aggiornabile da voi</div>
+			<div><span class="x">✕</span><s>Effetti vistosi che spostano il testo</s></div><div><span class="ok">✓</span>Movimenti piccoli e utili; chi preferisce, li può disattivare dal telefono</div>
+			<div><span class="x">✕</span><s>Promesse generiche (“il migliore”, “unico”)</s></div><div><span class="ok">✓</span>Solo informazioni vere: farine di Paolo Mariani, pasta fatta da voi, banco a peso</div>
+			<div><span class="x">✕</span><s>Page builder pesanti</s></div><div><span class="ok">✓</span>WordPress leggero (GeneratePress + editor a blocchi): veloce e modificabile</div>
+		</div>
+	</div>
+</section>
+
+<section class="type">
+	<div class="wrap">
+		<p class="kick">04 · I caratteri</p>
+		<h2>Quattro voci, <em>un solo tono</em></h2>
+		<p class="lead" style="color:rgba(247,238,223,.85)">Tutti caricati dal vostro sito, senza servizi esterni (meglio per privacy e velocità).</p>
+		<div class="specimen">
+			<div class="spec"><small>Titoli · Bricolage Grotesque</small><p class="a">Pasta fresca</p></div>
+			<div class="spec"><small>Parole chiave · Newsreader corsivo</small><p class="b">fatta da noi</p></div>
+			<div class="spec"><small>Prezzi e orari · DM Mono</small><p class="c">PAELLA ........ € 10,00<br>APERTO · 06:00 – 23:00</p></div>
+			<div class="spec"><small>Note a mano · Caveat (con parsimonia)</small><p class="d">tagliatelle di oggi</p></div>
+		</div>
+	</div>
+</section>
+
+<section class="live-sec">
+	<div class="wrap">
+		<p class="kick">05 · Il sistema dal vivo</p>
+		<h2>Provatelo: <em>passateci sopra</em></h2>
+		<p class="lead" style="margin-bottom:2rem">Questi sono gli stessi elementi del sito, funzionanti. Su computer passate il mouse; dal telefono toccate.</p>
+		<div class="live">
+			<div class="card"><small>Bottone “liquido”</small><a class="btn" href="#manca">Prenota un tavolo →</a><span class="touch-hint">Tieni premuto il bottone</span><p>Al passaggio (dal telefono: tenendo premuto) il colore si riempie come un liquido: un piccolo segnale che il bottone risponde.</p></div>
+			<div class="card"><small>Foto dentro il testo</small><p class="chiptext">La nostra <em>pasta fresca</em> <span class="chip" style="--src:url('img/pasta-fresca-tagliatelle-mani-fano.webp')"><img src="img/pasta-fresca-tagliatelle-mani-fano.webp" alt=""></span> e il banco <span class="chip" style="--src:url('img/gastronomia-vetrina-banco-cartellini-fano.webp')"><img src="img/gastronomia-vetrina-banco-cartellini-fano.webp" alt=""></span> di ogni giorno.</p><span class="touch-hint">Tocca le foto piccole</span><p>Le foto restano piccole e il testo non si muove; al passaggio si apre una “bolla” più grande.</p></div>
+			<div class="card"><small>Piatti con foto che appaiono</small>
+				<div class="pan">
+					<div>Antipasto di mare<span>€ 22</span><img src="img/gastronomia-capesante-gratinate-dettaglio-fano.webp" alt=""></div>
+					<div>Paella<span>€ 10</span><img src="img/gastronomia-paella-pesce-teglia-fano.webp" alt=""></div>
+					<div>Chitarrina allo scoglio<span>€ 12</span><img src="img/pasta-fresca-ravioli-dettaglio-fano.webp" alt=""></div>
+				</div><span class="touch-hint">Tocca un piatto</span><p>Nella home i piatti consigliati mostrano la loro foto quando ci passate sopra.</p></div>
+			<div class="card"><small>Il nastro</small><div class="ribbon mini-ribbon" aria-hidden="true"><span>Antipasti di mare <i>✷</i> <em>Pasta fresca</em> <i>✷</i> Banco a peso <i>✷</i> <em>Vini delle Marche</em> <i>✷</i> Antipasti di mare <i>✷</i> <em>Pasta fresca</em> <i>✷</i> Banco a peso <i>✷</i> <em>Vini delle Marche</em> <i>✷</i>&nbsp;</span></div><p>Scorre tra una sezione e l’altra, come l’insegna di una bottega.</p></div>
+		</div>
+	</div>
+</section>
+
+<section class="pages">
+	<div class="wrap">
+		<p class="kick">06 · Le pagine</p>
+		<h2>Computer e telefono, <em>pagina per pagina</em></h2>
+		<p class="lead">Anteprime della versione attuale (manca ancora la barra in alto, uguale su tutte le pagine). Ogni pagina è pensata prima per il telefono.</p>
+
+		<div class="page"><div class="page__shots"><div class="browser"><img src="img/home-desk.jpg" alt="Home, computer" loading="lazy"></div><div class="phone"><img src="img/home-mob.jpg" alt="Home, telefono" loading="lazy"></div></div>
+			<div><h3>Home</h3><p>Chi siete in una frase, la vetrina del giorno, la pasta fresca, i piatti da assaggiare e la prenotazione rapida.</p></div></div>
+		<div class="page"><div class="page__shots"><div class="browser"><img src="img/gastronomia-desk.jpg" alt="Gastronomia, computer" loading="lazy"></div><div class="phone"><img src="img/gastronomia-mob.jpg" alt="Gastronomia, telefono" loading="lazy"></div></div>
+			<div><h3>Gastronomia</h3><p>I cavalli di battaglia su due scontrini, la pasta, il banco a peso, l’asporto.</p></div></div>
+		<div class="page"><div class="page__shots"><div class="browser"><img src="img/pasta-fresca-desk.jpg" alt="Pasta fresca, computer" loading="lazy"></div><div class="phone"><img src="img/pasta-fresca-mob.jpg" alt="Pasta fresca, telefono" loading="lazy"></div></div>
+			<div><h3>Pasta fresca</h3><p>Il punto da mettere in evidenza: la farina di Paolo Mariani, l’impasto, i formati, le persone, i piatti del menù.</p></div></div>
+		<div class="page"><div class="page__shots"><div class="browser"><img src="img/menu-desk.jpg" alt="Menù, computer" loading="lazy"></div><div class="phone"><img src="img/menu-mob.jpg" alt="Menù, telefono" loading="lazy"></div></div>
+			<div><h3>Menù</h3><p>Classico e facile da consultare: categorie sempre a portata di dito, prezzi allineati, allergeni, banco e vini.</p></div></div>
+		<div class="page"><div class="page__shots"><div class="browser"><img src="img/prenota-desk.jpg" alt="Prenota, computer" loading="lazy"></div><div class="phone"><img src="img/prenota-mob.jpg" alt="Prenota, telefono" loading="lazy"></div></div>
+			<div><h3>Prenota</h3><p>Due minuti: giorno, ora, persone, e si apre WhatsApp con il messaggio pronto per voi.</p></div></div>
+
+		<div class="detail">
+			<figure><img src="img/sec-manifesto.jpg" alt="" loading="lazy"><figcaption>Home · chi siete, con le foto dentro il testo.</figcaption></figure>
+			<figure><img src="img/sec-formati.jpg" alt="" loading="lazy"><figcaption>Pasta fresca · ogni formato con le foto della lavorazione.</figcaption></figure>
+			<figure><img src="img/sec-cavalli.jpg" alt="" loading="lazy"><figcaption>Gastronomia · i cavalli di battaglia (da confermare).</figcaption></figure>
+			<figure><img src="img/sec-carta.jpg" alt="" loading="lazy"><figcaption>Menù · la carta completa, con gli allergeni.</figcaption></figure>
+		</div>
+	</div>
+</section>
+
+<section class="manage">
+	<div class="wrap">
+		<p class="kick">07 · Cosa gestite da soli</p>
+		<h2>Dal telefono, <em>senza chiamarmi</em></h2>
+		<p class="lead">Un’app web protetta da PIN (RistoMenu Pro) per le cose che cambiano ogni giorno.</p>
+		<div class="steps3">
+			<div class="step"><small>MENÙ</small><b>Piatti e prezzi</b><p>Aggiungete o cambiate un piatto, un prezzo, una nota: il sito si aggiorna subito in tutte le pagine.</p></div>
+			<div class="step"><small>ESAURITI</small><b>“Finito per oggi”</b><p>Un tocco e il piatto compare come esaurito. A mezzanotte, se volete, torna disponibile da solo.</p></div>
+			<div class="step"><small>PRENOTAZIONI</small><b>Tavoli via WhatsApp</b><p>Le richieste arrivano sul vostro WhatsApp già scritte. Voi decidete:</p>
+				<ul><li>quanti tavoli e coperti mettere online</li><li>con quanto preavviso</li><li>giorni di chiusura e festività</li><li>“completo” o “chiudi tutto” con un tocco</li></ul></div>
+		</div>
+		<figure style="margin:2.5rem 0 0"><img src="img/sec-prenota.jpg" alt="Prenotazione rapida nella home" style="border-radius:14px;box-shadow:0 14px 40px -25px rgba(35,29,26,.45)" loading="lazy"></figure>
+	</div>
+</section>
+
+<section class="todo-sec" id="manca">
+	<div class="wrap">
+		<p class="kick">08 · Cosa manca per andare online</p>
+		<h2>Gli ultimi <em>tasselli</em></h2>
+		<p class="lead" style="margin-bottom:2rem">Sul sito i testi mancanti restano in riquadri tratteggiati come questi: non inventiamo nulla su di voi.</p>
+		<div class="todo">
+			<div><span class="tag">foto in arrivo</span><b>Gli esterni</b><p>Le foto dell’ingresso e della facciata, appena pronte, per la home e la pagina Contatti.</p></div>
+			<div><span class="tag">da raccontare</span><b>La vostra storia</b><p>Quando avete aperto, chi c’è in cucina e al banco, il perché del nome: bastano poche risposte, anche a voce.</p></div>
+			<div><span class="tag">da confermare</span><b>Dati del vecchio sito</b><p>Indirizzo, telefoni, orari, account Instagram giusto, i fornitori citati e il coperto.</p></div>
+			<div><span class="tag">da decidere</span><b>Feste e prenotazioni</b><p>Menù delle feste (gestibile anch’esso dal telefono), orari festivi, numero WhatsApp e posti da mettere online.</p></div>
+		</div>
+		<div class="transfer">
+			<div>
+				<p class="kick" style="color:var(--burro)">Nuovo · il vostro van</p>
+				<h3>Vi veniamo <em>a prendere</em></h3>
+				<p>Molti clienti sono negli hotel della riviera, arrivano con i mezzi e trovano pochi parcheggi. Il servizio transfer diventa una sezione dedicata: la foto del van, dove arriva, come prenotarlo.</p>
+				<p>Proposta: telefono, oppure un bottone WhatsApp con il messaggio già pronto. Ci servono zone servite, orari, posti, costo e anticipo.</p>
+				<div class="wa">Ciao Acquolina, vorrei il transfer per <b>sabato 13/12</b> alle <b>20:00</b>, <b>4 persone</b>, dall’<b>hotel ……</b></div>
+			</div>
+			<div class="van">[ foto del van da scattare ]</div>
+		</div>
+	</div>
+</section>
+
+<section class="end">
+	<div class="wrap">
+		<h2>Il prossimo passo: <em>il sito online</em></h2>
+		<p>Con le ultime risposte e le foto mancanti completiamo i testi, proviamo tutto dal vostro telefono e pubblichiamo.</p>
+	</div>
+</section>
+
+<div class="wrap"><footer><span>Acquolina · cucina d’amare · Viale Dante Alighieri 122, Fano</span><span>Proposta di design · novembre 2026</span></footer></div>
+<script>
+(function(){
+	var b=document.querySelector('.live .btn');
+	if(b){
+		var t,held=false;
+		b.addEventListener('touchstart',function(){held=false;b.classList.add('is-on');t=setTimeout(function(){held=true},450)},{passive:true});
+		['touchend','touchcancel'].forEach(function(e){b.addEventListener(e,function(){clearTimeout(t);setTimeout(function(){b.classList.remove('is-on')},500)})});
+		b.addEventListener('click',function(ev){if(held){ev.preventDefault();held=false}});
+		b.addEventListener('contextmenu',function(ev){ev.preventDefault()});
+	}
+	var items=document.querySelectorAll('.chip,.pan div');
+	items.forEach(function(el){el.addEventListener('click',function(ev){
+		var on=!el.classList.contains('is-on');
+		items.forEach(function(o){o.classList.remove('is-on')});
+		if(on)el.classList.add('is-on');ev.stopPropagation();
+	})});
+	document.addEventListener('click',function(){items.forEach(function(o){o.classList.remove('is-on')})});
+})();
+</script>
+</body>
+</html>
