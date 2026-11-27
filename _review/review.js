@@ -242,10 +242,10 @@
 			'<p class="rv-intro__kick">Anteprima · ' + esc(CFG.titolo) + '</p>' +
 			'<h2>Diteci cosa <em>cambiare</em></h2>' +
 			'<ol class="rv-intro__steps">' +
-			'<li><span class="rv-ico">🖼</span><div><b>Toccate una foto</b><span>e scegliete <i>Va bene così</i> oppure <i>Da cambiare</i>, es. “Cambiatela, non mi piace”.</span></div></li>' +
-			'<li><span class="rv-ico">✍️</span><div><b>Toccate un testo</b><span>e riscrivetelo come lo volete: lo correggiamo noi.</span></div></li>' +
-			'<li><span class="rv-ico">✓</span><div><b>Vedete cosa avete già rivisto</b><span>✓ verde = approvato · ✎ = da cambiare. Toccate il segno per modificarlo.</span></div></li>' +
-			'<li><span class="rv-ico">➤</span><div><b>Premete “Invia revisioni”</b><span>in basso. Funziona da computer e da telefono; potete tornare quando volete.</span></div></li>' +
+			'<li><span class="rv-ico">1</span><div><b>Toccate una foto</b><span>e scegliete <i>Va bene così</i> oppure <i>Da cambiare</i>, es. “Cambiatela, non mi piace”.</span></div></li>' +
+			'<li><span class="rv-ico">2</span><div><b>Toccate un testo</b><span>e riscrivetelo come lo volete: lo correggiamo noi.</span></div></li>' +
+			'<li><span class="rv-ico">3</span><div><b>Vedete cosa avete già rivisto</b><span>✓ verde = approvato · ✎ = da cambiare. Toccate il segno per modificarlo.</span></div></li>' +
+			'<li><span class="rv-ico">4</span><div><b>Premete “Invia revisioni”</b><span>in basso. Funziona da computer e da telefono; potete tornare quando volete.</span></div></li>' +
 			'</ol>' +
 			'<label class="rv-intro__name">Il vostro nome<input type="text" maxlength="40" placeholder="es. Maria" value="' + esc(autore()) + '"></label>' +
 			'<button class="rv-btn rv-btn--start">Inizia la revisione</button>' +

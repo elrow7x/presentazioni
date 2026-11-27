@@ -14,7 +14,7 @@ body.rv-on { cursor: default; }
 body.rv-on .acq-mbar { display: none !important; }
 
 /* Barra in basso */
-.rv-bar { position: fixed; z-index: 99995; left: 50%; bottom: max(14px, env(safe-area-inset-bottom)); transform: translateX(-50%); display: flex; align-items: center; gap: 6px; padding: 6px; border-radius: 999px; background: rgba(28, 24, 22, .92); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); color: #fff; box-shadow: 0 14px 40px -12px rgba(0,0,0,.5); max-width: calc(100vw - 20px); }
+.rv-bar { position: fixed; z-index: 2147483646; left: 50%; bottom: max(14px, env(safe-area-inset-bottom)); transform: translateX(-50%); display: flex; align-items: center; gap: 6px; padding: 6px; border-radius: 999px; background: rgba(28, 24, 22, .92); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); color: #fff; box-shadow: 0 14px 40px -12px rgba(0,0,0,.5); max-width: calc(100vw - 20px); }
 .rv-bar button { border: 0; border-radius: 999px; padding: 10px 14px; font-size: 14px; font-weight: 650; cursor: pointer; color: inherit; background: rgba(255,255,255,.1); white-space: nowrap; }
 .rv-bar__mode[aria-pressed="true"] { background: #3d6bff; }
 .rv-bar__n { display: flex; gap: 8px; padding: 0 6px; font-size: 14px; }
@@ -26,7 +26,7 @@ body.rv-on .acq-mbar { display: none !important; }
 @media (max-width: 520px) { .rv-bar__mode { font-size: 0 !important; padding: 10px 12px !important; } .rv-bar__mode::before { content: "✎"; font-size: 16px; } .rv-bar__mode[aria-pressed="false"]::before { content: "👁"; } }
 
 /* Pannello (dal basso su telefono, a destra su computer) */
-.rv-sheet { position: fixed; z-index: 99996; inset: auto 0 0 0; transform: translateY(105%); transition: transform .35s cubic-bezier(.2,.8,.2,1); pointer-events: none; }
+.rv-sheet { position: fixed; z-index: 2147483646; inset: auto 0 0 0; transform: translateY(105%); transition: transform .35s cubic-bezier(.2,.8,.2,1); pointer-events: none; }
 .rv-sheet.is-open { transform: none; pointer-events: auto; }
 .rv-sheet__in { margin: 0 auto; max-width: 520px; background: #fff; color: #1c1816; border-radius: 22px 22px 0 0; padding: 16px 18px max(18px, env(safe-area-inset-bottom)); box-shadow: 0 -20px 50px -20px rgba(0,0,0,.4); max-height: 85vh; overflow: auto; }
 @media (min-width: 900px) { .rv-sheet { inset: auto 24px 90px auto; width: 420px; transform: translateX(120%); } .rv-sheet__in { border-radius: 20px; } }
@@ -48,11 +48,11 @@ body.rv-on .acq-mbar { display: none !important; }
 .rv-btn--save { background: #1c1816; color: #fff; }
 .rv-link { display: block; margin: 12px auto 0; border: 0; background: none; color: #a0352f; font-size: 13px; text-decoration: underline; cursor: pointer; }
 
-.rv-toast { position: fixed; z-index: 99999; left: 50%; top: 18px; transform: translate(-50%, -150%); background: #1c1816; color: #fff; padding: 10px 16px; border-radius: 99px; font-size: 14px; font-weight: 600; transition: transform .3s; pointer-events: none; }
+.rv-toast { position: fixed; z-index: 2147483647; left: 50%; top: 18px; transform: translate(-50%, -150%); background: #1c1816; color: #fff; padding: 10px 16px; border-radius: 99px; font-size: 14px; font-weight: 600; transition: transform .3s; pointer-events: none; }
 .rv-toast.is-show { transform: translate(-50%, 0); }
 
 /* Guida iniziale: sfondo sfumato */
-.rv-intro { position: fixed; inset: 0; z-index: 100000; display: grid; place-items: center; padding: 18px; opacity: 0; transition: opacity .35s;
+.rv-intro { position: fixed; inset: 0; z-index: 2147483647; display: grid; place-items: center; padding: 18px; opacity: 0; transition: opacity .35s;
 	background: radial-gradient(60% 50% at 15% 20%, rgba(171,23,45,.35), transparent 70%), radial-gradient(50% 50% at 85% 30%, rgba(169,189,180,.45), transparent 70%), radial-gradient(60% 60% at 50% 100%, rgba(247,215,122,.4), transparent 70%), rgba(251,244,233,.55);
 	backdrop-filter: blur(14px) saturate(1.1); -webkit-backdrop-filter: blur(14px) saturate(1.1); }
 .rv-intro.is-open { opacity: 1; }
@@ -70,3 +70,10 @@ body.rv-on .acq-mbar { display: none !important; }
 .rv-intro__name input { border: 1.5px solid #d9d4ce; border-radius: 12px; padding: 11px 12px; font-size: 16px; background: #fff; color: #1c1816; }
 .rv-btn--start { width: 100%; background: #ab172d; color: #fff; padding: 15px; font-size: 16px; }
 @media (prefers-reduced-motion: reduce) { .rv-sheet, .rv-intro, .rv-intro__card, .rv-toast { transition: none; } .rv-bar__send.is-pending { animation: none; } }
+
+/* Testi della guida: niente interlinea ereditata dal sito */
+.rv-ui span, .rv-ui b, .rv-ui label, .rv-ui p, .rv-ui li { line-height: 1.4; }
+.rv-intro__steps span { display: block; margin-top: 2px; }
+.rv-ico { font-weight: 800; color: #ab172d; font-size: 16px !important; }
+/* Il badge di Netlify sta in basso a destra: la barra resta sopra */
+@media (max-width: 700px) { .rv-bar { bottom: max(64px, calc(env(safe-area-inset-bottom) + 56px)); } }
